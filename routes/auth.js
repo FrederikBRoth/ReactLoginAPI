@@ -60,13 +60,13 @@ router.post("/login", async (req, res) => {
 	//check if email is a user
 	const user = await User.findOne({ email: req.body.email });
 	if (!user) {
-		res((statusMessage = "Email not in the system!"));
+		res.statusMessage = "Email not in the system!";
 		return res.status(400).end();
 	}
 	//check if password is correct
 	const validPass = await bcrypt.compare(req.body.password, user.password);
 	if (!validPass) {
-		res((statusMessage = "Invalid password"));
+		res.statusMessage = "Invalid password";
 		return res.status(400).end();
 	}
 

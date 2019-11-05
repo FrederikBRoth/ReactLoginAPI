@@ -90,5 +90,9 @@ router.get("/loginstatus", async (req, res) => {
 		loggedIn: req.session.loggedIn
 	});
 });
+router.get("/getusers", async (req, res) => {
+	const users = await chatkit.getUsers();
+	res.send(users);
+});
 
 module.exports = router;

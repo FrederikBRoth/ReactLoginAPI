@@ -55,7 +55,10 @@ router.post("/login", async (req, res) => {
 	//Validate input
 	console.log(req.body);
 	const { error } = loginValidation(req.body);
-	if (error) return res.status(400).send(error.details[0].message);
+	if (error) {
+		res.statusMessage = error.details[0].message;
+		return res.status(400).end();
+	}
 
 	//check if email is a user
 	const user = await User.findOne({ email: req.body.email });

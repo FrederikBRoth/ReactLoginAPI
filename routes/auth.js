@@ -84,7 +84,7 @@ router.get("/logout", async (req, res) => {
 });
 
 router.get("/loginstatus", async (req, res) => {
-	if (req.session.email == null) return res.send("No user");
+	if (req.session.user == null) return res.send({ loggedIn: false });
 	res.send({
 		email: req.session.user.email,
 		loggedIn: req.session.loggedIn

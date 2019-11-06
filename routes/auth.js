@@ -79,8 +79,9 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/logout", async (req, res) => {
-	req.session.loggedIn = false;
-	res.send("Logged out");
+	req.session.destroy((err) => {
+		res.send("logged out");
+	})
 });
 
 router.get("/loginstatus", async (req, res) => {

@@ -99,4 +99,9 @@ router.get("/getusers", async (req, res) => {
 	res.send(users);
 });
 
+router.get("/getrooms", async (req, res) => {
+	const rooms = await chatkit.getRooms();
+	res.send(rooms)
+})
+
 module.exports = router;
